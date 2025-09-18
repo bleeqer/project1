@@ -2,7 +2,7 @@ import React from "react";
 
 export function EditorZone() {
     return (
-        <div className="w-full">
+        <div className="flex flex-1">
             EditorZone
         </div>
     )
