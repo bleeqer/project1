@@ -3,35 +3,8 @@ import {create} from "zustand";
 import {ResizeDirection} from "@/core/types/ResizeDirection";
 import {DeepPartial} from "@/core/types/DeepPartial";
 import {deepMergeObjects} from "@/core/utils/deepMergeObjects";
+import {ResizeMap} from "@/core/types/ReszieMap";
 
-export interface ResizeMap {
-    isDragging: boolean,
-    resizeDirection: ResizeDirection,
-    top: {
-        top: number,
-        left: number,
-        width: number,
-        height: number,
-    },
-    right: {
-        top: number,
-        left: number,
-        width: number,
-        height: number,
-    },
-    bottom: {
-        top: number,
-        left: number,
-        width: number,
-        height: number,
-    },
-    left: {
-        top: number,
-        left: number,
-        width: number,
-        height: number,
-    }
-}
 
 interface ResizeState {
     resizeHandles: Record<string, ResizeMap> | null;

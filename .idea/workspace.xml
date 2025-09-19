@@ -15,8 +15,8 @@
       <list>
         <option value="CSS File" />
         <option value="HTML File" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -50,7 +50,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/ydg/Desktop/DEV/node/project1/src/core/handlers/__tests__&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ydg/Desktop/DEV/node/project1/src/core/utils&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -58,13 +58,22 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.inline.completion&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/ydg/Desktop/DEV/node/project1/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/core/utils" />
       <recent name="$PROJECT_DIR$/src/core/handlers/__tests__" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/core/event" />
       <recent name="$PROJECT_DIR$/src/core/handles" />
       <recent name="$PROJECT_DIR$/src/components/layouts" />
     </key>
@@ -85,7 +94,7 @@
       <option name="presentableId" value="Default" />
       <updated>1758078339783</updated>
       <workItem from="1758078340859" duration="4563000" />
-      <workItem from="1758083505975" duration="69817000" />
+      <workItem from="1758083505975" duration="97373000" />
     </task>
     <servers />
   </component>

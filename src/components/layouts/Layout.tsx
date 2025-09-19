@@ -1,14 +1,22 @@
 import React, {useRef, MouseEvent, useState, useEffect} from "react";
 import { LeftPanel } from "@/components/layouts/LeftPanel";
 import {EditorZone} from "@/components/layouts/EditorZone";
-import {ResizeHandler} from "@/core/handlers/ResizeHandler";
+import {mouseEventPublisher} from "@/core/event/MouseEventPublisher";
+import {ResizeSubscriber} from "@/core/event/ResizeSubscriber";
+import {windowInitializer} from "@/core/init/WindowInitializer";
 import {getResizeCursorStyle} from "@/core/utils/getCursorStyle";
-import {useResizeStore} from "@/core/stores/ResizeStore";
+import {useWindowStore} from "@/core/stores/WindowStore";
+
+useWindowStore.setState({windowWidth: window.innerWidth});
+useWindowStore.setState({windowHeight: window.innerHeight});
+windowInitializer.init({width: window.innerWidth, height: window.innerHeight});
+const resizeSubscriber = new ResizeSubscriber();
+mouseEventPublisher.subscribe(resizeSubscriber);
 
 export function Layout() {
     const ref = useRef(null);
     const [resizeHoverCursorStyle, setResizeHoverCursorStyle] = useState("default");
-    const {resizeHandles} = useResizeStore();
+    const {windows} = useWindowStore();
 
     useEffect(() => {
         ref.current.style.cursor = resizeHoverCursorStyle;
@@ -18,21 +26,19 @@ export function Layout() {
         <div
             ref={ref}
             className="h-full w-full flex flex-row"
-            onMouseDown={(event) => {
-                ResizeHandler.findResizeTargets(event);
-            }}
+            onMouseDown={(event) => mouseEventPublisher.publish({type: "down", event})}
             onMouseMove={(event) => {
-                ResizeHandler.resizeTargets(event);
-                Object.entries(resizeHandles)
-                    .forEach(entry => {
-                        const resizeMap = entry[1];
-                        const resizeDirection = ResizeHandler.getResizeDirection(resizeMap, event);
-                        setResizeHoverCursorStyle(getResizeCursorStyle(resizeDirection));
-                    });
+                mouseEventPublisher.publish({type: "move", event});
+                let finalResizeDirection = null;
+                windows.forEach((window) => {
+                    const resizeDirection = resizeSubscriber.getResizeDirection(window, event);
+                    if (resizeDirection) {
+                        finalResizeDirection = resizeDirection;
+                    }
+                });
+                setResizeHoverCursorStyle(getResizeCursorStyle(finalResizeDirection));
             }}
-            onMouseUp={(event) => {
-                ResizeHandler.endResizing(event);
-            }}
+            onMouseUp={(event) => mouseEventPublisher.publish({type: "up", event})}
         >
             <LeftPanel />
             <EditorZone />

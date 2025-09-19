@@ -1,4 +1,4 @@
-const isObject = (candidate: any) => {
+export const isObject = (candidate: any) => {
     return (candidate && typeof candidate === "object" && !Array.isArray(candidate));
 }
 
